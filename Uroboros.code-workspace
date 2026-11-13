@@ -1,0 +1,911 @@
+{
+	"folders": [
+		{
+			"name": "Uroboros",
+			"path": "."
+		},
+		{
+			"name": "UE5",
+			"path": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"npm.autoDetect": "off",
+		"terminal.integrated.env.linux": {
+			"PATH": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64:${env:PATH}",
+			"DOTNET_ROOT": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64",
+			"DOTNET_HOST_PATH": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64/dotnet",
+			"DOTNET_MULTILEVEL_LOOKUP": "0",
+			"DOTNET_ROLL_FORWARD": "LatestMajor"
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp"
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Uroboros Linux Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Debug",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Debug",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Uroboros Linux Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Debug",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"DebugGame",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"DebugGame",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Uroboros Linux DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"DebugGame",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Development",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Development",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Uroboros Linux Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Development",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux Test Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Test",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux Test Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Test",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Uroboros Linux Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux Test Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Test",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux Shipping Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Shipping",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux Shipping Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Shipping",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Uroboros Linux Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros Linux Shipping Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"Linux",
+					"Shipping",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Debug",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Debug",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Uroboros LinuxArm64 Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Debug",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Uroboros LinuxArm64 DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Development",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Development",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Uroboros LinuxArm64 Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Development",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Test Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Test",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Test Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Test",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Uroboros LinuxArm64 Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Test Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Test",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Shipping Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Shipping",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Shipping Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Shipping",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Uroboros LinuxArm64 Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "Uroboros LinuxArm64 Shipping Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Uroboros",
+					"LinuxArm64",
+					"Shipping",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "UroborosEditor Linux Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"UroborosEditor",
+					"Linux",
+					"Debug",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "UroborosEditor Linux Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"UroborosEditor",
+					"Linux",
+					"Debug",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"UroborosEditor Linux Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "UroborosEditor Linux Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"UroborosEditor",
+					"Linux",
+					"Debug",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "UroborosEditor Linux DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"UroborosEditor",
+					"Linux",
+					"DebugGame",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "UroborosEditor Linux DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"UroborosEditor",
+					"Linux",
+					"DebugGame",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"UroborosEditor Linux DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "UroborosEditor Linux DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"UroborosEditor",
+					"Linux",
+					"DebugGame",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "UroborosEditor Linux Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"UroborosEditor",
+					"Linux",
+					"Development",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "UroborosEditor Linux Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"UroborosEditor",
+					"Linux",
+					"Development",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"UroborosEditor Linux Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"label": "UroborosEditor Linux Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"UroborosEditor",
+					"Linux",
+					"Development",
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Launch Uroboros (Debug)",
+				"request": "launch",
+				"program": "/home/dt/Documents/Unreal Projects/Uroboros/Binaries/Linux/UnrealGame-Linux-Debug",
+				"preLaunchTask": "Uroboros Linux Debug Build",
+				"args": [
+				],
+				"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1",
+				"type": "cppdbg",
+				"visualizerFile": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/Uroboros": "/home/dt/Documents/Unreal Projects/Uroboros",
+					"/UEVFS/Root": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"name": "Launch Uroboros (DebugGame)",
+				"request": "launch",
+				"program": "/home/dt/Documents/Unreal Projects/Uroboros/Binaries/Linux/UnrealGame-Linux-DebugGame",
+				"preLaunchTask": "Uroboros Linux DebugGame Build",
+				"args": [
+				],
+				"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1",
+				"type": "cppdbg",
+				"visualizerFile": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/Uroboros": "/home/dt/Documents/Unreal Projects/Uroboros",
+					"/UEVFS/Root": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"name": "Launch Uroboros (Development)",
+				"request": "launch",
+				"program": "/home/dt/Documents/Unreal Projects/Uroboros/Binaries/Linux/UnrealGame",
+				"preLaunchTask": "Uroboros Linux Development Build",
+				"args": [
+				],
+				"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1",
+				"type": "cppdbg",
+				"visualizerFile": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/Uroboros": "/home/dt/Documents/Unreal Projects/Uroboros",
+					"/UEVFS/Root": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"name": "Launch Uroboros (Test)",
+				"request": "launch",
+				"program": "/home/dt/Documents/Unreal Projects/Uroboros/Binaries/Linux/UnrealGame-Linux-Test",
+				"preLaunchTask": "Uroboros Linux Test Build",
+				"args": [
+				],
+				"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1",
+				"type": "cppdbg",
+				"visualizerFile": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/Uroboros": "/home/dt/Documents/Unreal Projects/Uroboros",
+					"/UEVFS/Root": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"name": "Launch Uroboros (Shipping)",
+				"request": "launch",
+				"program": "/home/dt/Documents/Unreal Projects/Uroboros/Binaries/Linux/UnrealGame-Linux-Shipping",
+				"preLaunchTask": "Uroboros Linux Shipping Build",
+				"args": [
+				],
+				"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1",
+				"type": "cppdbg",
+				"visualizerFile": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/Uroboros": "/home/dt/Documents/Unreal Projects/Uroboros",
+					"/UEVFS/Root": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"name": "Launch UroborosEditor (Debug)",
+				"request": "launch",
+				"program": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Binaries/Linux/UnrealEditor-Linux-Debug",
+				"preLaunchTask": "UroborosEditor Linux Debug Build",
+				"args": [
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject"
+				],
+				"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1",
+				"type": "cppdbg",
+				"visualizerFile": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/Uroboros": "/home/dt/Documents/Unreal Projects/Uroboros",
+					"/UEVFS/Root": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"name": "Launch UroborosEditor (DebugGame)",
+				"request": "launch",
+				"program": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Binaries/Linux/UnrealEditor-Linux-DebugGame",
+				"preLaunchTask": "UroborosEditor Linux DebugGame Build",
+				"args": [
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject"
+				],
+				"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1",
+				"type": "cppdbg",
+				"visualizerFile": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/Uroboros": "/home/dt/Documents/Unreal Projects/Uroboros",
+					"/UEVFS/Root": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"name": "Launch UroborosEditor (Development)",
+				"request": "launch",
+				"program": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Binaries/Linux/UnrealEditor",
+				"preLaunchTask": "UroborosEditor Linux Development Build",
+				"args": [
+					"/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject"
+				],
+				"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1",
+				"type": "cppdbg",
+				"visualizerFile": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/Uroboros": "/home/dt/Documents/Unreal Projects/Uroboros",
+					"/UEVFS/Root": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+				}
+			},
+			{
+				"name": "Generate Project Files",
+				"type": "coreclr",
+				"request": "launch",
+				"preLaunchTask": "UnrealBuildTool Linux Development Build",
+				"program": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Build/BatchFiles/RunUBT.bat",
+				"args": [
+					"-projectfiles",
+					"-vscode",
+					"-project=/home/dt/Documents/Unreal Projects/Uroboros/Uroboros.uproject",
+					"-game",
+					"-engine",
+					"-dotnet"
+				],
+				"env": {
+					"PATH": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64:${env:PATH}",
+					"DOTNET_ROOT": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64",
+					"DOTNET_HOST_PATH": "/mnt/Data/UnrealEngine/Unreal_5.6.1/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64/dotnet",
+					"DOTNET_MULTILEVEL_LOOKUP": "0",
+					"DOTNET_ROLL_FORWARD": "LatestMajor"
+				},
+				"console": "internalConsole",
+				"internalConsoleOptions": "openOnSessionStart",
+				"stopAtEntry": false,
+				"cwd": "/mnt/Data/UnrealEngine/Unreal_5.6.1"
+			}
+		]
+	}
+}
