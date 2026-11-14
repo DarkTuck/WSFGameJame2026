@@ -54,9 +54,9 @@ void AUroborosAIControler::OnPerceptionUpdated(AActor* Actor, FAIStimulus Stimul
 #if WITH_EDITOR
 		GEngine->AddOnScreenDebugMessage(0,1.f,FColor::Green,TEXT("Seen Player"));
 #endif
-		if (AUroborosCharacter* const Character = Cast<AUroborosCharacter>(Actor))
+		if (AUroborosCharacter* const PlayerCharacter = Cast<AUroborosCharacter>(Actor))
 		{
-			Character->SpawnStone();
+			PlayerCharacter->SpawnStone();
 		}
 #if WITH_EDITOR
 		else
