@@ -1,0 +1,47 @@
+{
+ "format": 1,
+ "materials": {
+  "M_Cube": "T_Cube",
+  "M_Cube.002": "T_Cube.002",
+  "M_Floor_400x400.016": "wall400x400",
+  "M_Floor_400x400.020": "Floor"
+ },
+ "models": {
+  "PixelArtSource/Untitled.fbx": {
+   "canvases": {
+    "Floor": {
+     "cut": false,
+     "file": "PixelArtSource/Floor.png"
+    },
+    "wall400x400": {
+     "cut": false,
+     "file": "PixelArtSource/wall400x400.png"
+    }
+   },
+   "dest": "/Game/PixelArt",
+   "materials": {
+    "M_Floor_400x400.016": "wall400x400",
+    "M_Floor_400x400.020": "Floor"
+   }
+  },
+  "PixelArtSource/kurwamaccube.fbx": {
+   "canvases": {
+    "T_Cube": {
+     "cut": false,
+     "file": "PixelArtSource/T_Cube.png"
+    },
+    "T_Cube.002": {
+     "cut": false,
+     "file": "PixelArtSource/T_Cube.002.png"
+    }
+   },
+   "dest": "/Game/PixelArt",
+   "materials": {
+    "M_Cube": "T_Cube",
+    "M_Cube.002": "T_Cube.002"
+   }
+  }
+ },
+ "version": "1.4.1",
+ "watch": true
+}
