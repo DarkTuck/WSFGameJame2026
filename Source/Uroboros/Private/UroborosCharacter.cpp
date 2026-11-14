@@ -10,7 +10,16 @@ AUroborosCharacter::AUroborosCharacter()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	IsometricCamera = CreateDefaultSubobject<UUroborosIsometricCamera>(TEXT("IsometricCamera"));
+	IsometricCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("IsometricCamera"));
+	const float CameraYaw = -asin(1/sqrt(3));
+	IsometricCamera->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 500.0f),FRotator(-90.0f,CameraYaw,45.f));
+#if WITH_EDITORONLY_DATA
+	UStaticMeshComponent* cubeMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cube"));
+	UStaticMesh* cubeMesh = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'")).Object;
+	cubeMeshComponent->SetStaticMesh(cubeMesh);
+#endif
+	
+	IsometricCamera->bUsePawnControlRotation = false;
 }
 
 // Called when the game starts or when spawned

@@ -19,6 +19,11 @@ protected:
 public:
 	// Sets default values for this character's properties
 	AUroborosCharacter();
+private:
+#if WITH_EDITORONLY_DATA
+	UPROPERTY()
+	UStaticMeshComponent* CubeMesh;
+#endif
 
 protected:
 	// Called when the game starts or when spawned
