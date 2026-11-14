@@ -15,6 +15,11 @@ class UROBOROS_API AEnemyBase : public ACharacter
 	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="AI",meta=(AllowPrivateAccess=true))
 	UBehaviorTree* BehaviorTree;
+	
+#if WITH_EDITORONLY_DATA
+	UPROPERTY()
+	UStaticMeshComponent* CubeMesh;
+#endif
 
 public:
 	// Sets default values for this character's properties
