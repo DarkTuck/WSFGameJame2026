@@ -16,6 +16,7 @@ AUroborosCharacter::AUroborosCharacter()
 	IsometricCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("IsometricCamera"));
 	const float CameraYaw = -asin(1.00/sqrt(3.00));
 	IsometricCamera->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 500.0f),FRotator(-90.0f,CameraYaw,45.f));
+	IsometricCamera->SetupAttachment(GetMesh());
 #if 0
 	UStaticMeshComponent* cubeMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cube"));
 	UStaticMesh* cubeMesh = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'")).Object;
