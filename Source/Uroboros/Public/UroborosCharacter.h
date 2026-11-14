@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "UroborosCharacter.generated.h"
 
+class UUroborosCharacterMovementComponent;
 class UInputAction;
 struct FInputActionValue;
 class UCameraComponent;
@@ -21,6 +22,8 @@ protected:
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, Category ="Input")
 	UInputAction* MoveAction;
+	UPROPERTY(EditAnywhere, Category ="Input")
+	UInputAction* DashAction;
 	
 	UPROPERTY(EditAnywhere, Category = "Stone")
 	TSubclassOf<AActor> Stone;
@@ -33,10 +36,16 @@ protected:
 	
 	FTimerHandle StoneTimerHandle;
 	bool bSpawningStone = false;
-
+private:
+	UPROPERTY()
+	UUroborosCharacterMovementComponent* UroborosCharacterMovement;
+	
+	float LastInputRight=0;
+	float LastInputForward=0;
+	
 public:
 	// Sets default values for this character's properties
-	AUroborosCharacter();
+	AUroborosCharacter(const FObjectInitializer& ObjectInitializer);
 private:
 #if WITH_EDITORONLY_DATA
 	UPROPERTY()
@@ -51,6 +60,10 @@ protected:
 	/** Handles move inputs from either controls or UI interfaces */
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoMove(float Right, float Forward);
+	UFUNCTION(BlueprintCallable, Category="Input")
+	void Dash();
+	UFUNCTION(BlueprintCallable, Category="Input")
+	void StopDash();
 
 public:
 	// Called every frame
