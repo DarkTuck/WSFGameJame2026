@@ -1,0 +1,83 @@
+{
+ "format": 1,
+ "materials": {
+  "M_Circle.002": "T_Circle.002",
+  "M_Cube": "T_Cube",
+  "M_Cube.002": "T_Cube.002",
+  "M_Floor_400x400.002": "wall400x400.002",
+  "M_Floor_400x400.002x": "wall400x400.002xg",
+  "M_Floor_400x400.005": "wall400x400.004",
+  "M_Floor_400x400.016": "wall400x400",
+  "M_Floor_400x400.020": "Floor"
+ },
+ "models": {
+  "PixelArtSource/Untitled (2).fbx": {
+   "canvases": {
+    "Floor": {
+     "cut": false,
+     "file": "PixelArtSource/Floor.png"
+    },
+    "T_Circle.002": {
+     "cut": false,
+     "file": "PixelArtSource/T_Circle.002.png"
+    },
+    "wall400x400": {
+     "cut": false,
+     "file": "PixelArtSource/wall400x400.png"
+    },
+    "wall400x400.002xg": {
+     "cut": false,
+     "file": "PixelArtSource/wall400x400.002xg.png"
+    },
+    "wall400x400.004": {
+     "cut": false,
+     "file": "PixelArtSource/wall400x400.004.png"
+    }
+   },
+   "dest": "/Game/PixelArt",
+   "materials": {
+    "M_Circle.002": "T_Circle.002",
+    "M_Floor_400x400.002x": "wall400x400.002xg",
+    "M_Floor_400x400.005": "wall400x400.004",
+    "M_Floor_400x400.016": "wall400x400",
+    "M_Floor_400x400.020": "Floor"
+   }
+  },
+  "PixelArtSource/Untitled.fbx": {
+   "canvases": {
+    "Floor": {
+     "cut": false,
+     "file": "PixelArtSource/Floor.png"
+    },
+    "wall400x400": {
+     "cut": false,
+     "file": "PixelArtSource/wall400x400.png"
+    }
+   },
+   "dest": "/Game/PixelArt",
+   "materials": {
+    "M_Floor_400x400.016": "wall400x400",
+    "M_Floor_400x400.020": "Floor"
+   }
+  },
+  "PixelArtSource/kurwamaccube.fbx": {
+   "canvases": {
+    "T_Cube": {
+     "cut": false,
+     "file": "PixelArtSource/T_Cube.png"
+    },
+    "T_Cube.002": {
+     "cut": false,
+     "file": "PixelArtSource/T_Cube.002.png"
+    }
+   },
+   "dest": "/Game/PixelArt",
+   "materials": {
+    "M_Cube": "T_Cube",
+    "M_Cube.002": "T_Cube.002"
+   }
+  }
+ },
+ "version": "1.4.1",
+ "watch": true
+}
