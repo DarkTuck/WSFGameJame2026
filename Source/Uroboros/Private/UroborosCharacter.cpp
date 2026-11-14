@@ -84,8 +84,17 @@ void AUroborosCharacter::BeginPlay()
 #endif
 }
 
-AActor* AUroborosCharacter::SpawnStone()
+void AUroborosCharacter::StartSpawningStone()
 {
+	if (bSpawningStone)
+		return;
+	bSpawningStone = true;
+	GetWorld()->GetTimerManager().SetTimer(StoneTimerHandle,this,&AUroborosCharacter::SpawnStone,StoneSpawnDelay,false);
+}
+
+void AUroborosCharacter::SpawnStone()
+{
+	GetWorld()->GetTimerManager().ClearTimer(StoneTimerHandle);
 #if WITH_EDITOR
 	GEngine->AddOnScreenDebugMessage(2,1.f,FColor::Yellow,TEXT("SpawningStone"));
 #endif
@@ -99,7 +108,8 @@ AActor* AUroborosCharacter::SpawnStone()
 	
 	RespawnCharacter();
 	
-	return GetWorld()->SpawnActor(Stone, &SpawnTransform, SpawnParams);
+	GetWorld()->SpawnActor(Stone, &SpawnTransform, SpawnParams);
+	bSpawningStone=false;
 }
 
 void AUroborosCharacter::RespawnCharacter()

@@ -56,7 +56,7 @@ void AUroborosAIControler::OnPerceptionUpdated(AActor* Actor, FAIStimulus Stimul
 #endif
 		if (AUroborosCharacter* const PlayerCharacter = Cast<AUroborosCharacter>(Actor))
 		{
-			PlayerCharacter->SpawnStone();
+			PlayerCharacter->StartSpawningStone();
 		}
 #if WITH_EDITOR
 		else
