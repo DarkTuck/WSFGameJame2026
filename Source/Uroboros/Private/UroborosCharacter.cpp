@@ -5,7 +5,9 @@
 
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
+#include "LevelSettingsActor.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Uroboros/UroborosIsometricCamera.h"
 
 
@@ -63,6 +65,25 @@ void AUroborosCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	}
 }
 
+void AUroborosCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	if (const ALevelSettingsActor* LevelSetting = Cast<ALevelSettingsActor>(UGameplayStatics::GetActorOfClass(GetWorld(),ALevelSettingsActor::StaticClass())))
+	{
+#if WITH_EDITOR
+		GEngine->AddOnScreenDebugMessage(10,2.f,FColor::Green,TEXT("Changing lives amount"));
+#endif
+		
+		Lives = LevelSetting->PlayerLives;
+	}
+#if WITH_EDITOR
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(10,5.f,FColor::Red,TEXT("No Level Settings Found Falling back to default amount of lives"));	
+	}
+#endif
+}
+
 AActor* AUroborosCharacter::SpawnStone()
 {
 #if WITH_EDITOR
@@ -83,12 +104,13 @@ AActor* AUroborosCharacter::SpawnStone()
 
 void AUroborosCharacter::RespawnCharacter()
 {
+	--Lives;
 	if (Lives<=0)
 	{
 		Destroy();
 		return;
 	}
-	--Lives;
+
 	SetActorLocation(GetOwner()->GetActorLocation());
 }
 
