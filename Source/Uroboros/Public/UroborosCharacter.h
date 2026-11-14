@@ -21,6 +21,12 @@ protected:
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, Category ="Input")
 	UInputAction* MoveAction;
+	
+	UPROPERTY(EditAnywhere, Category = "Stone")
+	TSubclassOf<AActor> Stone;
+	
+	UPROPERTY(EditAnywhere, Category = "Stone")
+	int Lives = 3;
 
 public:
 	// Sets default values for this character's properties
@@ -46,4 +52,8 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	
+	virtual AActor* SpawnStone();
+	
+	void RespawnCharacter();
 };

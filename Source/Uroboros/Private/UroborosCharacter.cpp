@@ -5,6 +5,7 @@
 
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Uroboros/UroborosIsometricCamera.h"
 
 
@@ -17,6 +18,8 @@ AUroborosCharacter::AUroborosCharacter()
 	const float CameraYaw = -asin(1.00/sqrt(3.00));
 	IsometricCamera->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 500.0f),FRotator(-90.0f,CameraYaw,45.f));
 	IsometricCamera->SetupAttachment(GetMesh());
+	
+	Tags.Add(TEXT("Player"));
 #if 0
 	UStaticMeshComponent* cubeMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cube"));
 	UStaticMesh* cubeMesh = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'")).Object;
@@ -58,5 +61,34 @@ void AUroborosCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	{
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AUroborosCharacter::MoveInput);
 	}
+}
+
+AActor* AUroborosCharacter::SpawnStone()
+{
+#if WITH_EDITOR
+	GEngine->AddOnScreenDebugMessage(2,1.f,FColor::Yellow,TEXT("SpawningStone"));
+#endif
+	// spawn the projectile
+	FActorSpawnParameters SpawnParams;
+	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	SpawnParams.TransformScaleMethod = ESpawnActorScaleMethod::OverrideRootScale;
+	SpawnParams.Owner = GetOwner();
+	
+	const FTransform SpawnTransform = GetCharacterMovement()->GetActorTransform();
+	
+	RespawnCharacter();
+	
+	return GetWorld()->SpawnActor(Stone, &SpawnTransform, SpawnParams);
+}
+
+void AUroborosCharacter::RespawnCharacter()
+{
+	if (Lives<=0)
+	{
+		Destroy();
+		return;
+	}
+	--Lives;
+	SetActorLocation(GetOwner()->GetActorLocation());
 }
 
