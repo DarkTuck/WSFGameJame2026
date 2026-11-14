@@ -6,13 +6,14 @@
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
 #include "LevelSettingsActor.h"
+#include "UroborosCharacterMovementComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Uroboros/UroborosIsometricCamera.h"
 
 
 // Sets default values
-AUroborosCharacter::AUroborosCharacter()
+AUroborosCharacter::AUroborosCharacter(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer.SetDefaultSubobjectClass<UUroborosCharacterMovementComponent>(ACharacter::CharacterMovementComponentName))
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -20,6 +21,8 @@ AUroborosCharacter::AUroborosCharacter()
 	const float CameraYaw = -asin(1.00/sqrt(3.00));
 	IsometricCamera->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 500.0f),FRotator(-90.0f,CameraYaw,45.f));
 	IsometricCamera->SetupAttachment(GetMesh());
+	UroborosCharacterMovement = Cast<UUroborosCharacterMovementComponent>(GetCharacterMovement());
+	
 	
 	Tags.Add(TEXT("Player"));
 #if 0
@@ -42,12 +45,24 @@ void AUroborosCharacter::MoveInput(const FInputActionValue& Value)
 
 void AUroborosCharacter::DoMove(float Right, float Forward)
 {
+	LastInputRight = Right;
+	LastInputForward = Forward;
 	if (GetController())
 	{
 		// pass the move inputs
 		AddMovementInput(GetActorRightVector(), Right);
 		AddMovementInput(GetActorForwardVector(), Forward);
 	}
+}
+
+void AUroborosCharacter::Dash()
+{
+	UroborosCharacterMovement->StartDash(LastInputRight,LastInputForward);
+}
+
+void AUroborosCharacter::StopDash()
+{
+	UroborosCharacterMovement->StopDash();
 }
 
 // Called every frame
@@ -62,6 +77,8 @@ void AUroborosCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
 	{
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AUroborosCharacter::MoveInput);
+		EnhancedInputComponent->BindAction(DashAction,ETriggerEvent::Started,this,&AUroborosCharacter::Dash);
+		EnhancedInputComponent->BindAction(MoveAction,ETriggerEvent::Completed,this,&AUroborosCharacter::StopDash);
 	}
 }
 
