@@ -42,6 +42,8 @@ private:
 	
 	float LastInputRight=0;
 	float LastInputForward=0;
+
+	FString CurrentLevelName;
 	
 public:
 	// Sets default values for this character's properties
