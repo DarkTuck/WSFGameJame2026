@@ -99,6 +99,8 @@ void AUroborosCharacter::BeginPlay()
 		GEngine->AddOnScreenDebugMessage(10,5.f,FColor::Red,TEXT("No Level Settings Found Falling back to default amount of lives"));	
 	}
 #endif
+	
+	CurrentLevelName = UGameplayStatics::GetCurrentLevelName(GetWorld());
 }
 
 void AUroborosCharacter::StartSpawningStone()
@@ -134,7 +136,7 @@ void AUroborosCharacter::RespawnCharacter()
 	--Lives;
 	if (Lives<=0)
 	{
-		Destroy();
+		UGameplayStatics::OpenLevel(GetWorld(),*CurrentLevelName);
 		return;
 	}
 
