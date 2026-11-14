@@ -27,6 +27,12 @@ protected:
 	
 	UPROPERTY(EditAnywhere, Category = "Stone")
 	int Lives = 3;
+	
+	UPROPERTY(EditAnywhere, Category = "Stone")
+	float StoneSpawnDelay = 1.f;
+	
+	FTimerHandle StoneTimerHandle;
+	bool bSpawningStone = false;
 
 public:
 	// Sets default values for this character's properties
@@ -52,8 +58,10 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void BeginPlay() override;
 	
-	virtual AActor* SpawnStone();
+	void StartSpawningStone();	
+	virtual void SpawnStone();
 	
 	void RespawnCharacter();
 };

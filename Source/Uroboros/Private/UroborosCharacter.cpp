@@ -5,7 +5,9 @@
 
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
+#include "LevelSettingsActor.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Uroboros/UroborosIsometricCamera.h"
 
 
@@ -63,8 +65,36 @@ void AUroborosCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	}
 }
 
-AActor* AUroborosCharacter::SpawnStone()
+void AUroborosCharacter::BeginPlay()
 {
+	Super::BeginPlay();
+	if (const ALevelSettingsActor* LevelSetting = Cast<ALevelSettingsActor>(UGameplayStatics::GetActorOfClass(GetWorld(),ALevelSettingsActor::StaticClass())))
+	{
+#if WITH_EDITOR
+		GEngine->AddOnScreenDebugMessage(10,2.f,FColor::Green,TEXT("Changing lives amount"));
+#endif
+		
+		Lives = LevelSetting->PlayerLives;
+	}
+#if WITH_EDITOR
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(10,5.f,FColor::Red,TEXT("No Level Settings Found Falling back to default amount of lives"));	
+	}
+#endif
+}
+
+void AUroborosCharacter::StartSpawningStone()
+{
+	if (bSpawningStone)
+		return;
+	bSpawningStone = true;
+	GetWorld()->GetTimerManager().SetTimer(StoneTimerHandle,this,&AUroborosCharacter::SpawnStone,StoneSpawnDelay,false);
+}
+
+void AUroborosCharacter::SpawnStone()
+{
+	GetWorld()->GetTimerManager().ClearTimer(StoneTimerHandle);
 #if WITH_EDITOR
 	GEngine->AddOnScreenDebugMessage(2,1.f,FColor::Yellow,TEXT("SpawningStone"));
 #endif
@@ -78,17 +108,19 @@ AActor* AUroborosCharacter::SpawnStone()
 	
 	RespawnCharacter();
 	
-	return GetWorld()->SpawnActor(Stone, &SpawnTransform, SpawnParams);
+	GetWorld()->SpawnActor(Stone, &SpawnTransform, SpawnParams);
+	bSpawningStone=false;
 }
 
 void AUroborosCharacter::RespawnCharacter()
 {
+	--Lives;
 	if (Lives<=0)
 	{
 		Destroy();
 		return;
 	}
-	--Lives;
+
 	SetActorLocation(GetOwner()->GetActorLocation());
 }
 
