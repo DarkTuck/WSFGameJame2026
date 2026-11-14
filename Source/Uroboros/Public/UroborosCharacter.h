@@ -6,10 +6,15 @@
 #include "GameFramework/Character.h"
 #include "UroborosCharacter.generated.h"
 
+class UCameraComponent;
+
 UCLASS()
 class UROBOROS_API AUroborosCharacter : public ACharacter
 {
 	GENERATED_BODY()
+protected:
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UCameraComponent* IsometricCamera;
 
 public:
 	// Sets default values for this character's properties

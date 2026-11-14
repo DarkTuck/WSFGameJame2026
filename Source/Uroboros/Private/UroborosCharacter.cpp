@@ -2,6 +2,7 @@
 
 
 #include "Uroboros/Public/UroborosCharacter.h"
+#include "Uroboros/UroborosIsometricCamera.h"
 
 
 // Sets default values
@@ -9,6 +10,7 @@ AUroborosCharacter::AUroborosCharacter()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	IsometricCamera = CreateDefaultSubobject<UUroborosIsometricCamera>(TEXT("IsometricCamera"));
 }
 
 // Called when the game starts or when spawned
