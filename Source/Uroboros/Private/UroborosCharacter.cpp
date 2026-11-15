@@ -132,6 +132,7 @@ void AUroborosCharacter::StartSpawningStone()
 
 void AUroborosCharacter::SpawnStone()
 {
+	OnStoneSpawn();
 	bLockMove=true;
 	GetCharacterMovement()->SetActive(false);
 	GetMesh()->SetVisibility(false);
@@ -161,6 +162,7 @@ void AUroborosCharacter::OnRespawnDelayTimer()
 
 void AUroborosCharacter::RespawnCharacter()
 {
+	OnRespawn();
 	bLockMove=false;
 	GetCharacterMovement()->SetActive(true);
 	GetMesh()->SetVisibility(true);
