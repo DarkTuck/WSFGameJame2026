@@ -8,7 +8,18 @@
   "M_Floor_400x400.002x": "wall400x400.002xg",
   "M_Floor_400x400.005": "wall400x400.004",
   "M_Floor_400x400.016": "wall400x400",
-  "M_Floor_400x400.020": "Floor"
+  "M_Floor_400x400.020": "Floor",
+  "M_altar": "T_altar",
+  "M_candle_l": "T_candle_l",
+  "M_candle_m": "T_candle_m",
+  "M_candle_s": "T_candle_s",
+  "M_candle_xs": "T_candle_xs",
+  "M_shit": "T_shit",
+  "M_skull": "T_skull",
+  "M_tomb_bottom": "T_tomb_bottom",
+  "M_tomb_deco": "T_tomb_deco",
+  "M_tomb_sign": "T_tomb_sign",
+  "M_tomb_top": "T_tomb_top"
  },
  "models": {
   "PixelArtSource/Untitled (2).fbx": {
@@ -58,6 +69,68 @@
    "materials": {
     "M_Floor_400x400.016": "wall400x400",
     "M_Floor_400x400.020": "Floor"
+   }
+  },
+  "PixelArtSource/all_deco.fbx": {
+   "canvases": {
+    "T_altar": {
+     "cut": false,
+     "file": "PixelArtSource/T_altar.png"
+    },
+    "T_candle_l": {
+     "cut": false,
+     "file": "PixelArtSource/T_candle_l.png"
+    },
+    "T_candle_m": {
+     "cut": false,
+     "file": "PixelArtSource/T_candle_m.png"
+    },
+    "T_candle_s": {
+     "cut": false,
+     "file": "PixelArtSource/T_candle_s.png"
+    },
+    "T_candle_xs": {
+     "cut": false,
+     "file": "PixelArtSource/T_candle_xs.png"
+    },
+    "T_shit": {
+     "cut": false,
+     "file": "PixelArtSource/T_shit.png"
+    },
+    "T_skull": {
+     "cut": false,
+     "file": "PixelArtSource/T_skull.png"
+    },
+    "T_tomb_bottom": {
+     "cut": false,
+     "file": "PixelArtSource/T_tomb_bottom.png"
+    },
+    "T_tomb_deco": {
+     "cut": false,
+     "file": "PixelArtSource/T_tomb_deco.png"
+    },
+    "T_tomb_sign": {
+     "cut": false,
+     "file": "PixelArtSource/T_tomb_sign.png"
+    },
+    "T_tomb_top": {
+     "cut": false,
+     "file": "PixelArtSource/T_tomb_top.png"
+    }
+   },
+   "dest": "/Game/PixelArt",
+   "materials": {
+    "M_altar": "T_altar",
+    "M_candle_l": "T_candle_l",
+    "M_candle_m": "T_candle_m",
+    "M_candle_s": "T_candle_s",
+    "M_candle_xs": "T_candle_xs",
+    "M_shit": "T_shit",
+    "M_skull": "T_skull",
+    "M_tomb_bottom": "T_tomb_bottom",
+    "M_tomb_deco": "T_tomb_deco",
+    "M_tomb_sign": "T_tomb_sign",
+    "M_tomb_top": "T_tomb_top"
    }
   },
   "PixelArtSource/kurwamaccube.fbx": {
