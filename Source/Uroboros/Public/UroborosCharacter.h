@@ -39,6 +39,7 @@ protected:
 	FTimerHandle StoneTimerHandle;
 	FTimerHandle RespawnDelayTimer;
 	bool bSpawningStone = false;
+	bool bLockMove = false;
 private:
 	UPROPERTY()
 	UUroborosCharacterMovementComponent* UroborosCharacterMovement;

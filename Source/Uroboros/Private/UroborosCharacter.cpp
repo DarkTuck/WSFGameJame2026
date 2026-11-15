@@ -46,7 +46,7 @@ void AUroborosCharacter::MoveInput(const FInputActionValue& Value)
 
 void AUroborosCharacter::DoMove(float Right, float Forward)
 {
-	if (bSpawningStone) return;
+	if (bLockMove) return;
 	LastInputRight = Right;
 	LastInputForward = Forward;
 	
@@ -132,6 +132,7 @@ void AUroborosCharacter::StartSpawningStone()
 
 void AUroborosCharacter::SpawnStone()
 {
+	bLockMove=true;
 	GetCharacterMovement()->SetActive(false);
 	GetMesh()->SetVisibility(false);
 	GetWorld()->GetTimerManager().ClearTimer(StoneTimerHandle);
@@ -144,7 +145,7 @@ void AUroborosCharacter::SpawnStone()
 	SpawnParams.TransformScaleMethod = ESpawnActorScaleMethod::OverrideRootScale;
 	SpawnParams.Owner = GetOwner();
 	const FVector SpawnVector = GetCharacterMovement()->GetActorLocation();
-	const FRotator SpawnRotation = GetCharacterMovement()->GetCurrentAcceleration().Rotation();//+FRotator(0.0f,-90.f,0.0f);
+	const FRotator SpawnRotation = GetMesh()->GetComponentRotation();//+FRotator(0.0f,-90.f,0.0f);
 	const FTransform SpawnTransform = FTransform(SpawnRotation,SpawnVector,GetActorScale());
 		
 	GetWorld()->SpawnActor(Stone, &SpawnTransform, SpawnParams);
@@ -160,6 +161,7 @@ void AUroborosCharacter::OnRespawnDelayTimer()
 
 void AUroborosCharacter::RespawnCharacter()
 {
+	bLockMove=false;
 	GetCharacterMovement()->SetActive(true);
 	GetMesh()->SetVisibility(true);
 	--Lives;

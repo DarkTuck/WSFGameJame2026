@@ -48,6 +48,7 @@ void AUroborosAIControler::OnPossess(APawn* InPawn)
 
 void AUroborosAIControler::OnPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 {
+	/*
 	if (Actor->Tags.Contains(PlayerTag)&&Stimulus.WasSuccessfullySensed())
 	{
 		Blackboard->SetValueAsBool(SeesPlayerKeyName, true);
@@ -65,6 +66,7 @@ void AUroborosAIControler::OnPerceptionUpdated(AActor* Actor, FAIStimulus Stimul
 		}
 #endif
 	}
+	*/
 }
 
 void AUroborosAIControler::OnPerceptionForgotten(AActor* Actor)

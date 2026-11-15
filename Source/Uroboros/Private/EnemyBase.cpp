@@ -5,6 +5,7 @@
 
 #include "UroborosAIControler.h"
 #include "ProceduralMeshComponent.h"
+#include "UroborosCharacter.h"
 
 
 // Sets default values
@@ -131,10 +132,20 @@ void AEnemyBase::TickLOSMesh(float DeltaSeconds)
 		FVector HitPoint;
 
 		// In DefaultEngine.ini: Channel=ECC_GameTraceChannel1,Name="Obstacle"
-		bool bHit = World->LineTraceSingleByChannel(HitResult, LineStartLocation, LineEndLocation, ECollisionChannel::ECC_Visibility, TraceParams, FCollisionResponseParams());
+		bool bHit = World->LineTraceSingleByChannel(HitResult, LineStartLocation, LineEndLocation, ECC_Visibility, TraceParams, FCollisionResponseParams());
 		if (bHit)
 		{
 			HitPoint = HitResult.ImpactPoint;
+			if (HitResult.GetActor()->Tags.Contains("Player"))
+			{
+#if WITH_EDITOR
+				GEngine->AddOnScreenDebugMessage(1,2.f,FColor::Yellow,TEXT("Detected Player"));
+#endif
+				if (AUroborosCharacter* const PlayerCharacter = Cast<AUroborosCharacter>(HitResult.GetActor()))
+				{
+					PlayerCharacter->StartSpawningStone();
+				}
+			}
 		}
 		else
 		{
