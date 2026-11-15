@@ -76,6 +76,30 @@
     "M_Cube": "T_Cube",
     "M_Cube.002": "T_Cube.002"
    }
+  },
+  "PixelArtSource/mc.fbx": {
+   "canvases": {
+    "T_Cube": {
+     "cut": true,
+     "file": "PixelArtSource/T_Cube.png"
+    }
+   },
+   "dest": "/Game/PixelArt",
+   "materials": {
+    "M_Cube": "T_Cube"
+   }
+  },
+  "PixelArtSource/mc.glb": {
+   "canvases": {
+    "T_Cube": {
+     "cut": true,
+     "file": ""
+    }
+   },
+   "dest": "/Game/PixelArt",
+   "materials": {
+    "M_Cube": "T_Cube"
+   }
   }
  },
  "version": "1.4.1",
