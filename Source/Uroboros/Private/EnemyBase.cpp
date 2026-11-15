@@ -25,7 +25,7 @@ AEnemyBase::AEnemyBase()
 	LOSMesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("LineOfSightMesh"));
 	LOSMesh->bUseAsyncCooking = true;
 	LOSMesh->ContainsPhysicsTriMeshData(false);
-	LOSMesh->AttachToComponent(RootComponent, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true));
+	LOSMesh->SetupAttachment(RootComponent);
 
 	if (ArcAngle == 0)
 		ArcAngle = 120;
