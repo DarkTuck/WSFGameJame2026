@@ -143,8 +143,9 @@ void AUroborosCharacter::SpawnStone()
 	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 	SpawnParams.TransformScaleMethod = ESpawnActorScaleMethod::OverrideRootScale;
 	SpawnParams.Owner = GetOwner();
-	
-	const FTransform SpawnTransform = GetCharacterMovement()->GetActorTransform();
+	const FVector SpawnVector = GetCharacterMovement()->GetActorLocation();
+	const FRotator SpawnRotation = GetCharacterMovement()->GetCurrentAcceleration().Rotation()+FRotator(0.0f,-90.f,0.0f);
+	const FTransform SpawnTransform = FTransform(SpawnRotation,SpawnVector,GetActorScale());
 		
 	GetWorld()->SpawnActor(Stone, &SpawnTransform, SpawnParams);
 	GetWorld()->GetTimerManager().SetTimer(RespawnDelayTimer,this,&AUroborosCharacter::OnRespawnDelayTimer,RespawnDelay);
