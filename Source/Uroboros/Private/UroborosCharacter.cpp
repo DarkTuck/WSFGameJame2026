@@ -7,6 +7,7 @@
 #include "InputActionValue.h"
 #include "LevelSettingsActor.h"
 #include "UroborosCharacterMovementComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Uroboros/UroborosIsometricCamera.h"
@@ -20,7 +21,7 @@ AUroborosCharacter::AUroborosCharacter(const FObjectInitializer& ObjectInitializ
 	IsometricCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("IsometricCamera"));
 	const float CameraYaw = -asin(1.00/sqrt(3.00));
 	IsometricCamera->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 500.0f),FRotator(-90.0f,CameraYaw,45.f));
-	IsometricCamera->SetupAttachment(GetMesh());
+	IsometricCamera->SetupAttachment(GetCapsuleComponent());
 	UroborosCharacterMovement = Cast<UUroborosCharacterMovementComponent>(GetCharacterMovement());
 	
 	
@@ -47,6 +48,23 @@ void AUroborosCharacter::DoMove(float Right, float Forward)
 {
 	LastInputRight = Right;
 	LastInputForward = Forward;
+	
+	if (Right>0)
+	{
+		GetMesh()->SetRelativeRotation(FRotator(0,90,0));
+	}
+	else if (Right<0)
+	{
+		GetMesh()->SetRelativeRotation(FRotator(0,-90,0));
+	}
+	if (Forward>0)
+	{
+		GetMesh()->SetRelativeRotation(FRotator(0,0,0));
+	}
+	if (Forward<0)
+	{
+		GetMesh()->SetRelativeRotation(FRotator(0,270,0));
+	}
 	if (GetController())
 	{
 		// pass the move inputs
