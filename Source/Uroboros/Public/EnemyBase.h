@@ -38,4 +38,37 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 	UBehaviorTree* GetBehaviorTree() const { return BehaviorTree; };
+	
+private:
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Line of Sight", meta = (AllowPrivateAccess = "true"))
+	class UProceduralMeshComponent * LOSMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Line of Sight", meta = (AllowPrivateAccess = "true"))
+	UMaterial* LOSMaterial;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Line of Sight", meta = (AllowPrivateAccess = "true", UIMin = "1.0", UIMax = "360.0"))
+	float ArcAngle;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Line of Sight", meta = (AllowPrivateAccess = "true", UIMin = "1.0", UIMax = "5.0"))
+	float AngleStep;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Line of Sight", meta = (AllowPrivateAccess = "true", UIMin = "200", UIMax = "1000"))
+	float Radius;
+
+private:
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Line of Sight", meta = (AllowPrivateAccess = "true"))
+	TArray<FVector> LOSVertices;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Line of Sight", meta = (AllowPrivateAccess = "true"))
+	TArray<int32> LOSTriangles;
+
+private:
+
+	void InitLOSMesh();
+
+	void TickLOSMesh(float DeltaSeconds);
+
+	void UpdateLOSMeshData(const TArray<FVector>& Vertices, const TArray<int32>& Triangles);
 };

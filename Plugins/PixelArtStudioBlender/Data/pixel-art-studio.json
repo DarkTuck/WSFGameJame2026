@@ -11,6 +11,9 @@
   "M_Floor_400x400.005": "wall400x400.004",
   "M_Floor_400x400.016": "wall400x400",
   "M_Floor_400x400.020": "Floor",
+  "M_Plane.001": "body",
+  "M_Plane.004": "sholders",
+  "M_Plane.005": "Cape",
   "M_altar": "T_altar",
   "M_candle_l": "T_candle_l",
   "M_candle_m": "T_candle_m",
@@ -174,6 +177,28 @@
    "dest": "/Game/PixelArt",
    "materials": {
     "M_Cube": "T_Cube"
+   }
+  },
+  "PixelArtSource/me.fbx": {
+   "canvases": {
+    "Cape": {
+     "cut": false,
+     "file": "PixelArtSource/Cape.png"
+    },
+    "body": {
+     "cut": false,
+     "file": "PixelArtSource/body.png"
+    },
+    "sholders": {
+     "cut": false,
+     "file": "PixelArtSource/sholders.png"
+    }
+   },
+   "dest": "/Game/PixelArt/enemy/testenemy",
+   "materials": {
+    "M_Plane.001": "body",
+    "M_Plane.004": "sholders",
+    "M_Plane.005": "Cape"
    }
   }
  },

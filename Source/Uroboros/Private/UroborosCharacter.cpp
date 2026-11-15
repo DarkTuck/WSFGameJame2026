@@ -144,7 +144,7 @@ void AUroborosCharacter::SpawnStone()
 	SpawnParams.TransformScaleMethod = ESpawnActorScaleMethod::OverrideRootScale;
 	SpawnParams.Owner = GetOwner();
 	const FVector SpawnVector = GetCharacterMovement()->GetActorLocation();
-	const FRotator SpawnRotation = GetCharacterMovement()->GetCurrentAcceleration().Rotation()+FRotator(0.0f,-90.f,0.0f);
+	const FRotator SpawnRotation = GetCharacterMovement()->GetCurrentAcceleration().Rotation();//+FRotator(0.0f,-90.f,0.0f);
 	const FTransform SpawnTransform = FTransform(SpawnRotation,SpawnVector,GetActorScale());
 		
 	GetWorld()->SpawnActor(Stone, &SpawnTransform, SpawnParams);
