@@ -46,6 +46,7 @@ void AUroborosCharacter::MoveInput(const FInputActionValue& Value)
 
 void AUroborosCharacter::DoMove(float Right, float Forward)
 {
+	if (bSpawningStone) return;
 	LastInputRight = Right;
 	LastInputForward = Forward;
 	
@@ -131,6 +132,8 @@ void AUroborosCharacter::StartSpawningStone()
 
 void AUroborosCharacter::SpawnStone()
 {
+	GetCharacterMovement()->SetActive(false);
+	GetMesh()->SetVisibility(false);
 	GetWorld()->GetTimerManager().ClearTimer(StoneTimerHandle);
 #if WITH_EDITOR
 	GEngine->AddOnScreenDebugMessage(2,1.f,FColor::Yellow,TEXT("SpawningStone"));
@@ -142,15 +145,22 @@ void AUroborosCharacter::SpawnStone()
 	SpawnParams.Owner = GetOwner();
 	
 	const FTransform SpawnTransform = GetCharacterMovement()->GetActorTransform();
-	
-	RespawnCharacter();
-	
+		
 	GetWorld()->SpawnActor(Stone, &SpawnTransform, SpawnParams);
+	GetWorld()->GetTimerManager().SetTimer(RespawnDelayTimer,this,&AUroborosCharacter::OnRespawnDelayTimer,RespawnDelay);
+}
+
+void AUroborosCharacter::OnRespawnDelayTimer()
+{
+	RespawnCharacter();
+	GetWorld()->GetTimerManager().ClearTimer(RespawnDelayTimer);
 	bSpawningStone=false;
 }
 
 void AUroborosCharacter::RespawnCharacter()
 {
+	GetCharacterMovement()->SetActive(true);
+	GetMesh()->SetVisibility(true);
 	--Lives;
 	if (Lives<=0)
 	{
