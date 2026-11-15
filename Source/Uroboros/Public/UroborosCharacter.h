@@ -85,4 +85,9 @@ public:
 	void OnRespawnDelayTimer();
 	
 	void RespawnCharacter();
+	
+	UFUNCTION(BlueprintImplementableEvent, Category="Uroboros")
+	void OnRespawn();
+	UFUNCTION(BlueprintImplementableEvent, Category="Uroboros")
+	void OnStoneSpawn();
 };
