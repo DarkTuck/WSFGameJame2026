@@ -142,10 +142,15 @@ void AUroborosCharacter::SpawnStone()
 	SpawnParams.Owner = GetOwner();
 	
 	const FTransform SpawnTransform = GetCharacterMovement()->GetActorTransform();
-	
-	RespawnCharacter();
-	
+		
 	GetWorld()->SpawnActor(Stone, &SpawnTransform, SpawnParams);
+	GetWorld()->GetTimerManager().SetTimer(RespawnDelayTimer,this,&AUroborosCharacter::OnRespawnDelayTimer,RespawnDelay);
+}
+
+void AUroborosCharacter::OnRespawnDelayTimer()
+{
+	RespawnCharacter();
+	GetWorld()->GetTimerManager().ClearTimer(RespawnDelayTimer);
 	bSpawningStone=false;
 }
 

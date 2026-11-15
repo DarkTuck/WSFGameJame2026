@@ -33,8 +33,11 @@ protected:
 	
 	UPROPERTY(EditAnywhere, Category = "Stone")
 	float StoneSpawnDelay = 1.f;
+	UPROPERTY(EditAnywhere, Category = "Stone")
+	float RespawnDelay = 1.f;
 	
 	FTimerHandle StoneTimerHandle;
+	FTimerHandle RespawnDelayTimer;
 	bool bSpawningStone = false;
 private:
 	UPROPERTY()
@@ -77,6 +80,8 @@ public:
 	
 	void StartSpawningStone();	
 	virtual void SpawnStone();
+	
+	void OnRespawnDelayTimer();
 	
 	void RespawnCharacter();
 };
