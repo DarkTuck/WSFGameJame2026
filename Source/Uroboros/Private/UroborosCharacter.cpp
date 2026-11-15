@@ -51,19 +51,19 @@ void AUroborosCharacter::DoMove(float Right, float Forward)
 	
 	if (Right>0)
 	{
-		GetMesh()->SetRelativeRotation(FRotator(0,90,0));
+		GetMesh()->SetRelativeRotation(FRotator(0,0,0));
 	}
 	else if (Right<0)
 	{
-		GetMesh()->SetRelativeRotation(FRotator(0,-90,0));
+		GetMesh()->SetRelativeRotation(FRotator(0,180,0));
 	}
 	if (Forward>0)
 	{
-		GetMesh()->SetRelativeRotation(FRotator(0,0,0));
+		GetMesh()->SetRelativeRotation(FRotator(0,-90,0));
 	}
 	if (Forward<0)
 	{
-		GetMesh()->SetRelativeRotation(FRotator(0,270,0));
+		GetMesh()->SetRelativeRotation(FRotator(0,90,0));
 	}
 	if (GetController())
 	{

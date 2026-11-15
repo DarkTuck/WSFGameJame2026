@@ -4,6 +4,7 @@
   "M_Circle.002": "T_Circle.002",
   "M_Cube": "T_Cube",
   "M_Cube.002": "T_Cube.002",
+  "M_Cube_kamien1": "T_Cube_kamien",
   "M_Floor_400x400.002": "wall400x400.002",
   "M_Floor_400x400.002x": "wall400x400.002xg",
   "M_Floor_400x400.005": "wall400x400.004",
@@ -152,14 +153,14 @@
   },
   "PixelArtSource/mc.fbx": {
    "canvases": {
-    "T_Cube": {
+    "T_Cube_kamien": {
      "cut": true,
-     "file": "PixelArtSource/T_Cube.png"
+     "file": "PixelArtSource/T_Cube_kamien.png"
     }
    },
    "dest": "/Game/PixelArt",
    "materials": {
-    "M_Cube": "T_Cube"
+    "M_Cube_kamien1": "T_Cube_kamien"
    }
   },
   "PixelArtSource/mc.glb": {
