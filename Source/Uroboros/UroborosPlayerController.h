@@ -7,6 +7,7 @@
 #include "UroborosPlayerController.generated.h"
 
 class UInputMappingContext;
+class UUroborosUserWidget;
 /**
  * 
  */
@@ -17,6 +18,11 @@ class UROBOROS_API AUroborosPlayerController : public APlayerController
 	
 protected:
 
+	UPROPERTY(EditAnywhere,Category="UI")
+	TSubclassOf<UUroborosUserWidget> UIWidgetClass;
+	
+	TObjectPtr<UUroborosUserWidget> UIWidget;
+	
 	/** Input Mapping Contexts */
 	UPROPERTY(EditAnywhere, Category="Input|Input Mappings")
 	TArray<UInputMappingContext*> DefaultMappingContexts;
@@ -25,4 +31,5 @@ protected:
 	/** Input mapping context setup */
 	virtual void SetupInputComponent() override;
 
+	virtual void BeginPlay() override;
 };

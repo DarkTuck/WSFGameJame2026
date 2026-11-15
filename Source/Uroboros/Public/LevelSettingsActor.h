@@ -17,6 +17,8 @@ public:
 
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite)
 	int PlayerLives=3;
+	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite)
+	int LevelID=0;
 	
 protected:
 	// Called when the game starts or when spawned
@@ -25,4 +27,6 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	UFUNCTION(BlueprintPure)
+	int GetLevelID() const {return LevelID;};
 };

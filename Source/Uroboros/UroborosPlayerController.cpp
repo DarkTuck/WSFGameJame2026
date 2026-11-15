@@ -4,6 +4,10 @@
 #include "UroborosPlayerController.h"
 
 #include "EnhancedInputSubsystems.h"
+#include "LevelSettingsActor.h"
+#include "UroborosUserWidget.h"
+#include "Blueprint/UserWidget.h"
+#include "Kismet/GameplayStatics.h"
 
 void AUroborosPlayerController::SetupInputComponent()
 {
@@ -18,5 +22,18 @@ void AUroborosPlayerController::SetupInputComponent()
 				Subsystem->AddMappingContext(CurrentContext, 0);
 			}
 		}
+	}
+}
+
+void AUroborosPlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+	UIWidget = CreateWidget<UUroborosUserWidget>(this, UIWidgetClass);
+	if (!UIWidget)
+		return;
+	UIWidget->AddToPlayerScreen(0);
+	if (const ALevelSettingsActor* LevelSetting = Cast<ALevelSettingsActor>(UGameplayStatics::GetActorOfClass(GetWorld(),ALevelSettingsActor::StaticClass())))
+	{
+		UIWidget->BP_UpdateLevelUI(LevelSetting->LevelID);
 	}
 }
