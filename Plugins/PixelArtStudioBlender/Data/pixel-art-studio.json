@@ -5,6 +5,7 @@
   "M_Cube": "T_Cube",
   "M_Cube.002": "T_Cube.002",
   "M_Cube_kamien1": "T_Cube_kamien",
+  "M_Cube_kamien1.001": "T_Cube_kamien",
   "M_Floor_400x400.002": "wall400x400.002",
   "M_Floor_400x400.002x": "wall400x400.002xg",
   "M_Floor_400x400.005": "wall400x400.004",
@@ -160,7 +161,7 @@
    },
    "dest": "/Game/PixelArt",
    "materials": {
-    "M_Cube_kamien1": "T_Cube_kamien"
+    "M_Cube_kamien1.001": "T_Cube_kamien"
    }
   },
   "PixelArtSource/mc.glb": {
