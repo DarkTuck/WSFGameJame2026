@@ -84,6 +84,11 @@ void AUroborosCharacter::StopDash()
 	UroborosCharacterMovement->StopDash();
 }
 
+void AUroborosCharacter::DoReloadLevel()
+{
+	UGameplayStatics::OpenLevel(GetWorld(),*CurrentLevelName);
+}
+
 // Called every frame
 void AUroborosCharacter::Tick(float DeltaTime)
 {
@@ -98,6 +103,7 @@ void AUroborosCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AUroborosCharacter::MoveInput);
 		EnhancedInputComponent->BindAction(DashAction,ETriggerEvent::Started,this,&AUroborosCharacter::Dash);
 		EnhancedInputComponent->BindAction(MoveAction,ETriggerEvent::Completed,this,&AUroborosCharacter::StopDash);
+		EnhancedInputComponent->BindAction(ReloadLevelAction,ETriggerEvent::Triggered,this,&AUroborosCharacter::DoReloadLevel);
 	}
 }
 

@@ -24,6 +24,8 @@ protected:
 	UInputAction* MoveAction;
 	UPROPERTY(EditAnywhere, Category ="Input")
 	UInputAction* DashAction;
+	UPROPERTY(EditAnywhere, Category ="Input")
+	UInputAction* ReloadLevelAction;
 	
 	UPROPERTY(EditAnywhere, Category = "Stone")
 	TSubclassOf<AActor> Stone;
@@ -70,6 +72,8 @@ protected:
 	void Dash();
 	UFUNCTION(BlueprintCallable, Category="Input")
 	void StopDash();
+	UFUNCTION(BlueprintCallable, Category="Input")
+	void DoReloadLevel();
 
 public:
 	// Called every frame
