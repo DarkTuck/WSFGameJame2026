@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 10401,
-	"VersionName": "1.4.1",
+	"Version": 10503,
+	"VersionName": "1.5.3",
 	"FriendlyName": "Pixel Art Studio for Blender",
 	"Description": "Pixel Perfect, sharp and unlit textures from Blender into Unreal Engine.",
 	"Category": "Editor",

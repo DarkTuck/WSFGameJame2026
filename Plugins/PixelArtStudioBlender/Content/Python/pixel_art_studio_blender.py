@@ -206,7 +206,8 @@ def _read_manifest(doc, raw):
                      "where it may not look: %s" % file_rel)
             cut = info.get("cut")
             canvases[str(stem)] = {"cut": cut if isinstance(cut, bool) else None,
-                                   "path": file_path}
+                                   "path": file_path,
+                                   "filtered": info.get("filter") == "linear"}
             if file_path:
                 view["files"][_norm(file_path)] = {
                     "path": file_path, "dest": dest, "model": False}
@@ -357,6 +358,14 @@ TEXTURE_SETTINGS = (
     ("srgb", None, True),
     ("never_stream", None, True),
 )
+TEXTURE_SETTINGS_LINEAR = (
+    ("filter", "TextureFilter", "TF_DEFAULT"),
+    ("mip_gen_settings", "TextureMipGenSettings", "TMGS_FROM_TEXTURE_GROUP"),
+    ("compression_settings", "TextureCompressionSettings", "TC_EDITOR_ICON"),
+    ("lod_group", "TextureGroup", "TEXTUREGROUP_WORLD"),
+    ("srgb", None, True),
+    ("never_stream", None, True),
+)
 
 
 def texture_stem(tex, paths=None):
@@ -381,9 +390,34 @@ def stem_named(asset_name, canvases):
     return None
 
 
-def fix_texture(tex):
+def filtered_for(stem, entry):
+    if not stem:
+        return False
+    info = entry["canvases"].get(stem) if entry else None
+    if info is None:
+        for other in manifest()["models"].values():
+            if stem in other["canvases"]:
+                info = other["canvases"][stem]
+                break
+    return bool(info and info.get("filtered"))
+
+
+def texture_filtered(tex, paths=None):
+    paths = obj_sources(tex) if paths is None else paths
+    stem, entry = _canvas_file_stem(paths)
+    if not stem:
+        entry = _entry_of(paths)
+        stem = stem_named(tex.get_name(), entry["canvases"]) \
+            if entry is not None else None
+    return filtered_for(stem, entry)
+
+
+def fix_texture(tex, filtered=None):
+    if filtered is None:
+        filtered = texture_filtered(tex)
+    settings = TEXTURE_SETTINGS_LINEAR if filtered else TEXTURE_SETTINGS
     changed = []
-    for name, enum, value in TEXTURE_SETTINGS:
+    for name, enum, value in settings:
         want = getattr(getattr(unreal, enum), value) if enum else value
         try:
             if tex.get_editor_property(name) != want:
@@ -619,7 +653,7 @@ def fix_mesh(sm, paths=None):
             once("notex-" + stem, "no texture %s for %s yet"
                  % (stem, sm.get_name()))
             continue
-        fix_texture(texture)
+        fix_texture(texture, filtered_for(stem, entry))
         mi = material_instance(stem, texture, _cut_for(stem, entry))
         if current != mi:
             slot.set_editor_property("material_interface", mi)
@@ -752,14 +786,15 @@ def fix_project():
                 if not cands:
                     continue
                 if cls == "Texture2D":
-                    stem, _e = _canvas_file_stem(cands)
+                    stem, owner = _canvas_file_stem(cands)
                     entry = _entry_of(cands)
-                    if not stem and not (entry and stem_named(
-                            data.asset_name, entry["canvases"])):
+                    if not stem and entry is not None:
+                        stem = stem_named(data.asset_name, entry["canvases"])
+                    if not stem:
                         continue
                     obj = data.get_asset()
                     STATS["assets_loaded"] += 1
-                    if fix_texture(obj):
+                    if fix_texture(obj, filtered_for(stem, owner or entry)):
                         found["textures"] += 1
                     if entry is not None:
                         folder = str(data.package_path)

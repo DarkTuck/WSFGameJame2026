@@ -1,11 +1,20 @@
 {
  "format": 1,
  "materials": {
+  "M_Bone": "M_Bone",
+  "M_BookClosed": "T_BookClosed",
+  "M_BookOpen": "T_BookOpen",
+  "M_BrPillarXS": "T_BrPillarA",
+  "M_Bricks": "T_Bricks",
+  "M_Carcass": "T_Carcass",
   "M_Circle.002": "T_Circle.002",
+  "M_CobwebA": "T_CobwebA",
+  "M_CobwebB": "T_CobwebB",
   "M_Cube": "T_Cube",
   "M_Cube.002": "T_Cube.002",
   "M_Cube_kamien1": "T_Cube_kamien",
   "M_Cube_kamien1.001": "T_Cube_kamien",
+  "M_Femur": "T_Femur",
   "M_Floor_400x400.002": "wall400x400.002",
   "M_Floor_400x400.002x": "wall400x400.002xg",
   "M_Floor_400x400.005": "wall400x400.004",
@@ -14,6 +23,7 @@
   "M_Plane.001": "body",
   "M_Plane.004": "sholders",
   "M_Plane.005": "Cape",
+  "M_Throne": "M_Throne",
   "M_altar": "T_altar",
   "M_candle_l": "T_candle_l",
   "M_candle_m": "T_candle_m",
@@ -138,6 +148,88 @@
     "M_tomb_top": "T_tomb_top"
    }
   },
+  "PixelArtSource/all_deco_updated.fbx": {
+   "canvases": {
+    "M_Bone": {
+     "cut": false,
+     "file": "PixelArtSource/M_Bone.png"
+    },
+    "M_Throne": {
+     "cut": true,
+     "file": "PixelArtSource/M_Throne.png"
+    },
+    "T_BookClosed": {
+     "cut": false,
+     "file": "PixelArtSource/T_BookClosed.png"
+    },
+    "T_BookOpen": {
+     "cut": false,
+     "file": "PixelArtSource/T_BookOpen.png"
+    },
+    "T_BrPillarA": {
+     "cut": false,
+     "file": "PixelArtSource/T_BrPillarA.png"
+    },
+    "T_Bricks": {
+     "cut": true,
+     "file": "PixelArtSource/T_Bricks.png"
+    },
+    "T_Carcass": {
+     "cut": true,
+     "file": "PixelArtSource/T_Carcass.png"
+    },
+    "T_CobwebA": {
+     "cut": true,
+     "file": "PixelArtSource/T_CobwebA.png"
+    },
+    "T_CobwebB": {
+     "cut": true,
+     "file": "PixelArtSource/T_CobwebB.png"
+    },
+    "T_Femur": {
+     "cut": false,
+     "file": "PixelArtSource/T_Femur.png"
+    },
+    "T_candle_l": {
+     "cut": false,
+     "file": "PixelArtSource/T_candle_l.png"
+    },
+    "T_candle_m": {
+     "cut": false,
+     "file": "PixelArtSource/T_candle_m.png"
+    },
+    "T_candle_s": {
+     "cut": false,
+     "file": "PixelArtSource/T_candle_s.png"
+    },
+    "T_candle_xs": {
+     "cut": false,
+     "file": "PixelArtSource/T_candle_xs.png"
+    },
+    "T_skull": {
+     "cut": false,
+     "file": "PixelArtSource/T_skull.png"
+    }
+   },
+   "dest": "/Game/PixelArt",
+   "materials": {
+    "M_Bone": "M_Bone",
+    "M_BookClosed": "T_BookClosed",
+    "M_BookOpen": "T_BookOpen",
+    "M_BrPillarXS": "T_BrPillarA",
+    "M_Bricks": "T_Bricks",
+    "M_Carcass": "T_Carcass",
+    "M_CobwebA": "T_CobwebA",
+    "M_CobwebB": "T_CobwebB",
+    "M_Femur": "T_Femur",
+    "M_Throne": "M_Throne",
+    "M_candle_l": "T_candle_l",
+    "M_candle_m": "T_candle_m",
+    "M_candle_s": "T_candle_s",
+    "M_candle_xs": "T_candle_xs",
+    "M_skull": "T_skull"
+   }
+  },
   "PixelArtSource/kurwamaccube.fbx": {
    "canvases": {
     "T_Cube": {
@@ -202,6 +294,6 @@
    }
   }
  },
- "version": "1.4.1",
+ "version": "1.5.3",
  "watch": true
 }
